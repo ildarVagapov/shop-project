@@ -48,4 +48,12 @@ nav {
 	background-color: rgb(114, 67, 161);
 	padding: 10px 10px 5px;
 	border-radius: 10px;
+	cursor: pointer;
+}
+
+.cart-quantity {
+	background-color: rgb(20, 8, 8);
+	color: #fff;
+	border-radius: 100%;
+	padding: 2px 7px;
 }

@@ -8,7 +8,7 @@ const Shop = () => {
 	const [items, setItems] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [order, setOrder] = useState([])
-
+	console.log(order)
 
 	const addToCart = (item) => {
 		const itemIndex = order.findIndex(orderItem => orderItem.id === item.id)
@@ -27,7 +27,7 @@ const Shop = () => {
 						quantity: orderItem.quantity + 1
 					}
 				} else {
-					return item
+					return orderItem
 				}
 			})
 			setOrder(newOrder)
