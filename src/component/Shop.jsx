@@ -49,13 +49,19 @@ const Shop = () => {
 		setIsBascetShow(!isBascetShow)
 	}
 
+	const removeFromeBascet = (item) => {
+		const newOrder = order.filter((el) => el.id !== item)
+
+		setOrder(newOrder)
+	}
+
 	return (
 		<main className="content container">
 			<Cart quantity={order.length} handleBascet={handleBascet} />
 
 			{loading ? <Preloader /> : <ItemsList items={items} addToCart={addToCart} />}
 
-			{isBascetShow && <BascetList order={order} handleBascet={handleBascet} />}
+			{isBascetShow && <BascetList order={order} handleBascet={handleBascet} removeFromeBascet={removeFromeBascet} />}
 		</main>
 	)
 }

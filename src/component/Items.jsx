@@ -1,5 +1,4 @@
-const Items = (props) => {
-	const { id, name, description, price, full_background, addToCart } = props;
+const Items = ({ id, name, description, price, full_background, addToCart }) => {
 	return (
 		<div className="card" id={id}>
 			<div className="card-image">

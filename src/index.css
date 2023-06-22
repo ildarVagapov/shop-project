@@ -75,3 +75,35 @@ nav {
 	font-size: 20px;
 	cursor: pointer;
 }
+
+.bascet-item {
+	position: relative;
+}
+.bascet-remove {
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+	top: 10px;
+}
+
+.add-goods {
+	font-size: 20px;
+	cursor: pointer;
+	color: #06b011;
+	padding: 0 10px 3px;
+	font-weight: bold;
+	border: 0.1px solid #000;
+	margin-right: 5px;
+}
+
+.remove-goodse {
+	font-weight: bold;
+	color: #06b011;
+	padding: 0 10px 3px;
+	cursor: pointer;
+	font-size: 20px;
+	border: 0.1px solid #000;
+	margin-left: 5px;
+}
