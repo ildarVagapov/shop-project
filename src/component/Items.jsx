@@ -4,8 +4,8 @@ const Items = (props) => {
 		<div className="card" id={id}>
 			<div className="card-image">
 				<img src={full_background} alt={name} />
-				<span className="card-title">{name}</span>
 			</div>
+			<span className="card-title">{name}</span>
 			<div className="card-content">
 				<p>{description}</p>
 			</div>

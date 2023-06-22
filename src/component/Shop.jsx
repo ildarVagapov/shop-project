@@ -3,12 +3,23 @@ import { API_KEY, API_URL } from '../config'
 import { Preloader } from "./Preloader"
 import { ItemsList } from "./ItemsList"
 import { Cart } from "./Cart"
+import { BascetList } from "./BascetList"
 
 const Shop = () => {
 	const [items, setItems] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [order, setOrder] = useState([])
-	console.log(order)
+	const [isBascetShow, setIsBascetShow] = useState(false)
+
+	useEffect(function getItems() {
+		fetch(API_URL, {
+			headers: { 'Authorization': API_KEY },
+		}).then(response => response.json())
+			.then((data) => {
+				data.featured && setItems(data.featured)
+				setLoading(false)
+			})
+	}, [])
 
 	const addToCart = (item) => {
 		const itemIndex = order.findIndex(orderItem => orderItem.id === item.id)
@@ -34,22 +45,17 @@ const Shop = () => {
 		}
 	}
 
-	useEffect(function getItems() {
-		fetch(API_URL, {
-			headers: { 'Authorization': API_KEY },
-		}).then(response => response.json())
-			.then((data) => {
-				data.featured && setItems(data.featured)
-				setLoading(false)
-			})
-	}, [])
+	const handleBascet = () => {
+		setIsBascetShow(!isBascetShow)
+	}
 
 	return (
 		<main className="content container">
-			<Cart quantity={order.length} />
-			{
-				loading ? <Preloader /> : <ItemsList items={items} addToCart={addToCart} />
-			}
+			<Cart quantity={order.length} handleBascet={handleBascet} />
+
+			{loading ? <Preloader /> : <ItemsList items={items} addToCart={addToCart} />}
+
+			{isBascetShow && <BascetList order={order} handleBascet={handleBascet} />}
 		</main>
 	)
 }

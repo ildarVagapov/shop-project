@@ -57,3 +57,21 @@ nav {
 	border-radius: 100%;
 	padding: 2px 7px;
 }
+
+.bascet-collection {
+	position: fixed;
+	left: 50%;
+	top: 46%;
+	transform: translate(-50%, -50%);
+	width: 50%;
+	box-shadow: 0px 6px 17px 19px rgba(34, 37, 39, 0.2);
+}
+.bascet-close {
+	font-weight: bold;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 5px;
+	font-size: 20px;
+	cursor: pointer;
+}
