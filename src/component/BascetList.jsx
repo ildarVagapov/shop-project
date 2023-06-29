@@ -1,20 +1,20 @@
 import { BascetItem } from "./BascetItem"
 
-const BascetList = ({ order, handleBascet, removeFromeBascet }) => {
+const BascetList = ({ order, handleBascet, removeFromeBascet, removeItem, addItem }) => {
 
 	const totalPrice = order.reduce((sum, el) => {
 		return sum + el.price * el.quantity
 	}, 0)
 
 	return (
-		<ul class="collection bascet-collection">
-			<li class="collection-item active">Корзина</li>
+		<ul className="collection bascet-collection">
+			<li className="collection-item active">Корзина</li>
 			{
 				order.length ? order.map(item => {
-					return <BascetItem key={item.id} {...item} removeFromeBascet={removeFromeBascet} />
-				}) : <li class="collection-item">Корзина пуста</li>
+					return <BascetItem key={item.id} {...item} addItem={addItem} removeItem={removeItem} removeFromeBascet={removeFromeBascet} />
+				}) : <li className="collection-item">Корзина пуста</li>
 			}
-			<li class="collection-item active">Общая стоимость {totalPrice}</li>
+			<li className="collection-item active">Общая стоимость {totalPrice}</li>
 			<span onClick={handleBascet} className="bascet-close">X</span>
 		</ul>
 

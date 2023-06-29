@@ -11,6 +11,7 @@ const Shop = () => {
 	const [order, setOrder] = useState([])
 	const [isBascetShow, setIsBascetShow] = useState(false)
 
+
 	useEffect(function getItems() {
 		fetch(API_URL, {
 			headers: { 'Authorization': API_KEY },
@@ -55,13 +56,40 @@ const Shop = () => {
 		setOrder(newOrder)
 	}
 
+	const addItem = (itemId) => {
+		const newOrder = order.map(el => {
+			if (el.id === itemId) {
+				return {
+					...el,
+					quantity: el.quantity + 1
+				}
+			} else {
+				return el
+			}
+		})
+		setOrder(newOrder)
+	}
+	const removeItem = (itemId) => {
+		const newOrder = order.map(el => {
+			if (el.id === itemId) {
+				return {
+					...el,
+					quantity: el.quantity > 0 ? el.quantity - 1 : 0
+				}
+			} else {
+				return el
+			}
+		})
+		setOrder(newOrder)
+	}
+
 	return (
 		<main className="content container">
 			<Cart quantity={order.length} handleBascet={handleBascet} />
 
 			{loading ? <Preloader /> : <ItemsList items={items} addToCart={addToCart} />}
 
-			{isBascetShow && <BascetList order={order} handleBascet={handleBascet} removeFromeBascet={removeFromeBascet} />}
+			{isBascetShow && <BascetList removeItem={removeItem} addItem={addItem} order={order} handleBascet={handleBascet} removeFromeBascet={removeFromeBascet} />}
 		</main>
 	)
 }
