@@ -33,7 +33,6 @@ nav {
 .card-content {
 	flex-grow: 1;
 	display: flex;
-	align-items: start;
 }
 .card-action {
 	display: flex;
