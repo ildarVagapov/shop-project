@@ -1,7 +1,10 @@
+import { useContext } from "react"
 import { BascetItem } from "./BascetItem"
+import { ShopContext } from "../context/context"
 
-const BascetList = ({ order, handleBascet, removeFromeBascet, removeItem, addItem }) => {
+const BascetList = () => {
 
+	const { order, handleBascet } = useContext(ShopContext)
 	const totalPrice = order.reduce((sum, el) => {
 		return sum + el.price * el.quantity
 	}, 0)
@@ -11,7 +14,7 @@ const BascetList = ({ order, handleBascet, removeFromeBascet, removeItem, addIte
 			<li className="collection-item active">Корзина</li>
 			{
 				order.length ? order.map(item => {
-					return <BascetItem key={item.id} {...item} addItem={addItem} removeItem={removeItem} removeFromeBascet={removeFromeBascet} />
+					return <BascetItem key={item.id} {...item} />
 				}) : <li className="collection-item">Корзина пуста</li>
 			}
 			<li className="collection-item active">Общая стоимость {totalPrice}</li>

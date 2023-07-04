@@ -1,23 +1,24 @@
 import { createContext, useReducer } from 'react'
 import { reducer } from '../reducer/reducer'
 
+
+const ShopContext = createContext()
 // ТИПЫ ДЛЯ ДИСПАТЧ
 export const REMOVE_FROME_BASCET = 'REMOVE_FROME_BASCET'
 export const HANDLE_BASCET = 'HANDLE_BASCET'
 export const ADD_ITEM = 'ADD_ITEM'
 export const REMOVE_ITEM = 'REMOVE_ITEM'
 export const ADD_TO_CART = 'ADD_TO_CART'
+export const SET_ITEMS = 'SET_ITEM'
 
-const ShopContext = createContext()
 
+// state
 const initialState = {
 	items: [],
 	loading: true,
 	order: [],
 	isBascetShow: false
 }
-
-
 
 const ContextProvider = ({ children }) => {
 	const [value, dispatch] = useReducer(reducer, initialState)
@@ -39,7 +40,11 @@ const ContextProvider = ({ children }) => {
 	}
 
 	value.addToCart = (item) => {
-		dispatch({ type: ADD_TO_CART, payload: { item: item } })
+		dispatch({ type: ADD_TO_CART, payload: item })
+	}
+
+	value.setItems = (data) => {
+		dispatch({ type: SET_ITEMS, payload: data })
 	}
 
 	return (

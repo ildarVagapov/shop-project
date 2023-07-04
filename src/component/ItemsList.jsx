@@ -1,12 +1,15 @@
+import { useContext } from "react"
 import { Items } from "./Items"
+import { ShopContext } from "../context/context"
 
-const ItemsList = ({ items, addToCart }) => {
+const ItemsList = () => {
+	const { items } = useContext(ShopContext)
 	return (
 		<div className="items">
 			{
 				items.map((item) => {
 					return (
-						<Items key={item.id} {...item} addToCart={addToCart} />
+						<Items key={item.id} {...item} />
 					)
 				})
 			}

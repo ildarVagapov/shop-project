@@ -2,11 +2,11 @@ import { useContext } from "react"
 import { ShopContext } from "../context/context"
 
 
-const BascetItem = ({ name, id, price, quantity, removeFromeBascet, removeItem, addItem }) => {
+const BascetItem = ({ name, id, price, quantity }) => {
+
 	const totalPrice = quantity * price
 
-	const { example } = useContext(ShopContext)
-	console.log(example)
+	const { removeFromeBascet, removeItem, addItem } = useContext(ShopContext)
 
 	return (
 		<li className="collection-item bascet-item">
